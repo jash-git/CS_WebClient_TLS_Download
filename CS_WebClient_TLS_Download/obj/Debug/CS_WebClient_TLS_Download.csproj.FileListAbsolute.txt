@@ -1,0 +1,6 @@
+C:\Users\jashliao\Desktop\CS_WebClient_TLS_Download\CS_WebClient_TLS_Download\bin\Debug\CS_WebClient_TLS_Download.exe.config
+C:\Users\jashliao\Desktop\CS_WebClient_TLS_Download\CS_WebClient_TLS_Download\bin\Debug\CS_WebClient_TLS_Download.exe
+C:\Users\jashliao\Desktop\CS_WebClient_TLS_Download\CS_WebClient_TLS_Download\bin\Debug\CS_WebClient_TLS_Download.pdb
+C:\Users\jashliao\Desktop\CS_WebClient_TLS_Download\CS_WebClient_TLS_Download\obj\Debug\CS_WebClient_TLS_Download.csprojResolveAssemblyReference.cache
+C:\Users\jashliao\Desktop\CS_WebClient_TLS_Download\CS_WebClient_TLS_Download\obj\Debug\CS_WebClient_TLS_Download.exe
+C:\Users\jashliao\Desktop\CS_WebClient_TLS_Download\CS_WebClient_TLS_Download\obj\Debug\CS_WebClient_TLS_Download.pdb

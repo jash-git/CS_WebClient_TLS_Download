@@ -1,0 +1,1186 @@
+
+
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://v3.bootcss.com/examples/carousel/ -->
+<!--<html lang="zh-TW" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">-->
+<html lang="zh-TW">
+<head id="_ctl0_header"><meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+<!--
+	<meta http-equiv="Cache-Control" content="max-age=0, no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache">		
+-->
+<!--<meta http-equiv="Cache-Control" content="must-revalidate, public, max-age=3600">-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--<meta charset="utf-8">-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Bootstrap core CSS -->
+<link href="/chi/js/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" /><title>
+	中華民國內政部全球資訊網
+</title>
+<!-------------nav------------------>
+<link rel="stylesheet" href="/chi/js/responsive-nav.js-master/responsive-nav.css" />
+<script src="/chi/js/responsive-nav.js-master/responsive-nav.js"></script>
+<!-- CSS -->
+<link href="/chi/css/reset.css" rel="stylesheet" type="text/css" /><link href="/chi/css/style.css" rel="stylesheet" type="text/css" /><link href="/chi/css/style_rwd.css" rel="stylesheet" type="text/css" />
+<!-- SmartMenus jQuery Bootstrap Addon CSS -->
+<link href="/chi/js/smartmenus-1.0.0/addons/bootstrap/jquery.smartmenus.bootstrap.css" rel="stylesheet" />
+<!-------slick---------->
+<link rel="stylesheet" type="text/css" href="/chi/js/slick-1.6.0/slick/slick.css" /><link rel="stylesheet" type="text/css" href="/chi/js/slick-1.6.0/slick/slick-theme.css" />
+<!-------tab----------------->
+
+<!--------fat------------------>
+<!--<link rel="stylesheet" href="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/themes/base/all.css" />-->
+<!--<link rel="stylesheet" href="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/themes/base/theme.css" />-->
+<link rel="stylesheet" href="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/themes/base/base.css" />
+<!--<link rel="stylesheet" href="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/themes/base/tabs.css" />-->
+<!--<link rel="stylesheet" href="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/themes/base/datepicker.css" />-->
+<!--<link rel="stylesheet" href="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/themes/base/accordion.css" />-->
+
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+
+<script>
+    function init() {
+        window.addEventListener('scroll', function (e) {
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                shrinkOn = 90,
+                header = document.querySelector(".menu_box");
+            if (distanceY > shrinkOn) {
+                classie.add(header, "smaller");
+            } else {
+                if (classie.has(header, "smaller")) {
+                    classie.remove(header, "smaller");
+                }
+            }
+        });
+    }
+    window.onload = init();
+</script>
+<script>
+    function init() {
+        window.addEventListener('scroll', function (e) {
+            var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                shrinkOn = 90,
+                header = document.querySelector(".search_box");
+            if (distanceY > shrinkOn) {
+                classie.add(header, "smaller");
+            } else {
+                if (classie.has(header, "smaller")) {
+                    classie.remove(header, "smaller");
+                }
+            }
+        });
+    }
+    window.onload = init();
+</script>
+<style>
+	.into{
+		position: absolute;		
+	}
+	.into a{
+		color: transparent;
+	}
+	.into a:focus{
+		color: black;
+	}
+	.slick-arrow:focus{
+		border: 1px solid blue;
+	}
+	input[type='text']:focus,input[type='button']:focus,input[type='submit']:focus,select:focus{
+		outline: 2px solid #0096a2;	
+	}
+	a:focus{
+		/*border: 2px solid #0096a2;*/		
+		outline: 2px solid #0096a2;		
+	}
+	.slider a:focus, #tabs a:focus{
+		display:block;
+	}
+	label{
+		font-weight: normal;
+	}
+
+	.glyphicon-chevron-left {
+		background-image:url("../images/index/event_pre.png");
+		height:35px!important;
+	}
+	.glyphicon-chevron-right {
+		background-image:url("../images/index/event_next.png");
+		height:35px!important;
+	}
+	.glyphicon-chevron-right:before{ content:""!important}
+	.glyphicon-chevron-left:before{ content:""!important}
+	
+</style>
+
+	
+    <script>
+        $(document).ready(function () {
+            
+            //resize when windows resize
+            $(window).resize(function () {
+                setTimeout(adjust_size, 300);
+            });
+            $(".tab2Link").click(function () {
+                //alert("C");
+                adjust_size();
+            });
+			$(document).attr('title', "中華民國內政部全球資訊網");
+
+            setTimeout(adjust_size, 300);
+			
+        });
+        function adjust_size() {            
+            //強制指定li高度. 因為些微差異也會造成版面問題
+            $("#tabs_2 .news_area .pic img").height("auto");//最少也要有130
+            if ($("#tabs_2 .news_area .pic img").first().height() < 85) {
+                $("#tabs_2 .news_area .pic img").height(85);
+            }
+            else {
+                $("#tabs_2 .news_area .pic img").height($("#tabs_2 .news_area .pic img").first().height());
+            }
+
+            $("#tabs_photo .news_area .pic img").height("auto");//最少也要有130
+            if ($("#tabs_photo .news_area .pic img").first().height() < 85) {
+                $("#tabs_photo .news_area .pic img").height(85);
+            }
+            else {
+                $("#tabs_photo .news_area .pic img").height($("#tabs_photo .news_area .pic img").first().height());
+            }
+
+        }
+
+
+    </script>
+	<style>
+		h2{
+			padding: 3px 0px 6px 0px;
+			margin: 0px 0px 0px 0px;
+		}
+		h3{
+			display: inline;
+			
+		}
+	</style>
+
+
+    <style>
+        /*Milton客製CSS*/
+        .TopArticle div{
+            border-left-color: red!important;
+        }
+    </style>        
+    <!--auto complete s-->
+	<style>
+	.ui-autocomplete
+	{
+		border-top:5px solid transparent!important;
+		font-size:12px!important;
+		z-index: 99999;
+	}    
+	.ui-corner-all
+	{
+    /*font-size:12px;!important;*/    
+    }
+
+	</style>	
+    <style type="text/css" media="print">
+        .policy .col-xs-6 { width:150px!important; }
+    </style>
+
+<meta name="Last-Modified" content="Thu, 28 Mar 2019 07:51:13 GMT"><meta name="Expires" content="Wed, 28 Mar 2018 07:51:13 GMT"><meta name="og:title" content="機關網站首頁"><meta name="DC.Title" content="中華民國內政部全球資訊網"><meta name="DC.Creator" content="內政部"><meta name="DC.Subject" content="機關網站首頁"><meta name="DC.Description" content="提供內政部官方發佈的新聞訊息"><meta name="DC.Contributor" content="內政部"><meta name="DC.Type" content="text/html"><meta name="DC.Format" content="text/html"><meta name="DC.Source" content="內政部"><meta name="DC.Language" content="中文"><meta name="DC.coverage.t.max" content="2021-1-1"><meta name="DC.coverage.t.min" content="2017-1-1"><meta name="DC.Publisher" content="內政部"><meta name="DC.Date" content="2017-1-1 12:00"><meta name="DC.Identifier" content="301000000A"><meta name="DC.Rights" content="內政部"><meta name="Category.Theme" content="110"><meta name="Category.Cake" content="100"><meta name="Category.Service" content="1Z0"><meta name="Keywords" content="內政部,部長,公告"></head>
+<body id="_ctl0_HTML_Body" class="in ">
+<div style="position:absolute" class="into"><a href="#accesskey_main_area" tabindex="100">進入內容區塊</a></div>
+
+<noscript>您的瀏覽器不支援JavaScript功能,若網頁功能無法正常使用時,請開啟瀏覽器JavaScript狀態</noscript>
+   
+<div class="container"><form name="aspnetForm" method="post" action="./" id="aspnetForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="90059987" />
+  <!----------上方資訊------------>
+  <div class="top">
+    <h1><a href="/index.aspx" title="中華民國內政部logo" tabindex="100"><img src="/chi/images/all/logo.png" alt="中華民國內政部全球資訊網"></a></h1>
+  </div>
+  <!-------------toplink-------------->
+  <div class="top_link">
+    <ul class="version">
+      <li class="en"><a href="http://www.moi.gov.tw/english/" target="_blank" title="english web in new window" tabindex="350">ENGLISH</a></li>
+      <li class="child"><a href="http://www.moi.gov.tw/child/" target="_blank" title="內政部兒童版網站" tabindex="350">兒童版</a></li>
+      <li class="fb"><a href="https://www.facebook.com/moi.gov.tw" title="內政大小事" target="_blank" tabindex="350"><span>內政大小事</span></a></li>
+    </ul>
+  </div>
+  <!-------------搜尋-------------->
+  <div class="search_box">
+    <div class="search">
+      <div class="keyin">
+      <label for="_ctl0_keyword"></label>
+        
+         <input name="_ctl0:keyword" type="text" id="_ctl0_keyword" tabindex="300" />
+        <label for="_ctl0_searchbt"></label>
+        
+        <input type="submit" name="_ctl0:searchbt" value="搜尋" id="_ctl0_searchbt" tabindex="300" />
+      </div>
+      <div class="sort"> 
+      <!--<label for="google"></label>-->
+         <span class="adv"><a href="https://www.google.com.tw/advanced_search?hl=zh-TW&as_sitesearch=www.moi.gov.tw&q=" target="_blank" title="進階搜尋按鈕" tabindex="400">進階搜尋</a></span> <span class="hotword">
+            
+                                                                <a tabindex='400' href='http://cse.google.com/cse?cx=017736874612354751023:xx83gusgtie&q=%e4%b8%8d%e5%8b%95%e7%94%a2%e4%ba%a4%e6%98%93%e5%af%a6%e5%83%b9%e6%9f%a5%e8%a9%a2&oq=%34%47&gs_l=partner.12...0.0.0.4341.0.0.0.0.0.0.0.0..0.0.gsnos%2Cn%3D13...0.0..1ac..25.partner..0.0.0.#gsc.tab=0&gsc.q=%e4%b8%8d%e5%8b%95%e7%94%a2%e4%ba%a4%e6%98%93%e5%af%a6%e5%83%b9%e6%9f%a5%e8%a9%a2&gsc.page=1' target='_blank'>不動產交易實價查詢</a>,
+                                                            
+                                                                <a tabindex='400' href='http://cse.google.com/cse?cx=017736874612354751023:xx83gusgtie&q=%e8%87%aa%e7%84%b6%e4%ba%ba%e6%86%91%e8%ad%89%e6%87%89%e7%94%a8&oq=%34%47&gs_l=partner.12...0.0.0.4341.0.0.0.0.0.0.0.0..0.0.gsnos%2Cn%3D13...0.0..1ac..25.partner..0.0.0.#gsc.tab=0&gsc.q=%e8%87%aa%e7%84%b6%e4%ba%ba%e6%86%91%e8%ad%89%e6%87%89%e7%94%a8&gsc.page=1' target='_blank'>自然人憑證應用</a>
+                                                            </span> </div>
+    </div>
+  </div>
+  <!-------------主選單------------->
+  <div class="menu_box">
+    <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <div class="navbar-collapse collapse">
+        <div class="link">
+          <ul>
+            <li class="acc"><a href="#" accesskey="u" class="accesskey" title="上方資訊" tabindex="200">:::</a></li>
+            <li><a href="/index.aspx" title="回首頁" tabindex="200">回首頁</a></li>
+            <li class="line">│</li>
+            <li><a href="/sitemap.aspx" title="網站導覽" tabindex="200">網站導覽</a></li>
+            <li class="line">│</li>
+            <li><a href="https://service.moi.gov.tw/ecss/bin/ite001q1.asp" target="_blank" title="內政部部長電子信箱" tabindex="200">部長信箱</a></li>
+            <li class="line">│</li>
+            <li><a href="http://terms.naer.edu.tw/" target="_blank" title="雙語詞彙" tabindex="200">雙語詞彙 </a></li>
+            <li class="line">│</li>
+            <li><a href="/chi/chi_faq/faq.aspx" title="常見問答" tabindex="200">常見問答</a></li>
+            <li class="line">│</li>
+            <li><a href="/chi/chi_epaper/epaper.aspx" title="訂閱電子報" tabindex="200">電子報</a></li>
+            <li class="line">│</li>
+            <li class="rss"><a href="/rss_list.aspx" title="RSS訂閱" tabindex="200">RSS</a></li>
+          </ul>
+        </div>
+        <a href="#" accesskey="m" class="accesskey" title="主選單">:::</a>
+        <ul class="nav navbar-nav">
+          <li class="n01"><a href="/chi/chi_about/about.aspx" title="本部簡介">本部簡介</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><a href="/chi/chi_about/organization.aspx" title="職掌及組織">職掌及組織</a><li>
+              <li><a href="/chi/chi_minister/minister.aspx?type=01" title="部長專區">部長專區</a><span class="caret"></span>
+                <ul class="dropdown-menu">
+                  <li><a href="/chi/chi_minister/minister.aspx?type=01" title="部長簡介">部長簡介</a></li>
+                  <li><a href="/chi/chi_minister/minister_schedule.aspx" title="公開行程">公開行程</a></li>
+                  <li class="end"><a href="https://service.moi.gov.tw/ecss/bin/ite001q1.asp" target="_blank" title="內政部部長電子信箱">部長信箱</a></li>
+                </ul>
+              </li>
+              <li><a href="/chi/chi_public/policy.aspx?policy_code=02&type=info" title="施政計畫">施政計畫</a></li>
+              <li><a href="https://www.moi.gov.tw/outline/index.html" target="_blank" title="內政概要">內政概要</a></li>
+              <li><a href="/chi/chi_about/tel_classify.aspx" title="聯絡資訊">聯絡資訊</a></li>
+              <li class="end"><a href="/chi/chi_about/tel_classify.aspx?type=unit" title="本部單位及所屬機關">本部單位及所屬機關</a><span class="caret"></span>
+                <ul class="dropdown-menu">
+                  <li><a href="/chi/chi_about/tel_classify.aspx?type=unit&im=1" title="本部單位">本部單位</a></li>
+                  <li class="end"><a href="/chi/chi_about/tel_classify.aspx?type=unit&im=0" title="所屬機關">所屬機關</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="n02"><a href="/chi/chi_ipmoi_note/policy_index01.aspx" title="重大政策">重大政策</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><a href="/chi/chi_ipmoi_note/policy_index01.aspx" title="人民安心．簡政便民">人民安心．簡政便民</a></li>
+              <li><a href="/chi/chi_ipmoi_note/policy_index02.aspx" title="國土永續．居住正義">國土永續．居住正義</a></li>
+              <li class="end"><a href="/chi/chi_ipmoi_note/policy_index03.aspx" title="公民參與．擁抱國際">公民參與．擁抱國際</a></li>
+            </ul>
+          </li>
+          <li class="n03"><a href="#" title="申辦表單">申辦表單</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><a href="http://www.gov.tw/News2.aspx?n=21595FA41A9EE70A&sms=CE45CBF44B3CA591&OID=2.16.886.101.20003.20001" target="_blank" title="表單下載">表單下載</a><span style="display:none" class="caret"></span>
+			    <ul style="display:none" class="dropdown-menu">
+                <li style="display:none"><a href="/chi/chi_egov_app/top_list.aspx" title="熱門表單">熱門表單</a></li>
+                <li style="display:none"><a href="/chi/chi_egov_app/form_list.aspx" title="主題類別">主題類別</a></li>
+                <li style="display:none" class="end"><a href="/chi/chi_egov_app/form_list.aspx?type=U&unitsn=2&CL1=%e6%b0%91%e6%94%bf%e5%8f%b8" title="機關單位">機關單位</a></li>
+                </ul></li>              
+              <li class="end"><a href="https://www.gov.tw/News2.aspx?n=07ACE2E316EEE218&sms=8A7DADA9FBF26FDA&OID=2.16.886.101.20003.20001" target="_blank"  title="線上申辦">線上申辦</a></li>
+            </ul>
+          </li>
+          <li class="n04"><a href="/chi/chi_public_info/index.aspx" title="政府資訊公開">政府資訊公開</a>
+
+
+            
+
+            </li>
+
+
+
+
+          <li class="n05"><a href="#">法規及訴願</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><a href="http://glrs.moi.gov.tw/" target="_blank" title="主管法規查詢系統">主管法規查詢系統</a></li>
+              <li><a href="/chi/chi_Act/Act.aspx" title="法案預告及動態">法案預告及動態</a><span class="caret"></span><ul class="dropdown-menu">
+        <li><a href="/chi/chi_act/act_info.aspx" title="法案預告及動態說明">法案預告及動態說明</a></li>
+        <li><a href="/chi/chi_act/act.aspx?sd=0" title="草案預告">草案預告</a></li>
+        <li><a href="/chi/chi_act/act.aspx?sd=1" title="送行政院審查">送行政院審查</a></li>
+        <li><a href="/chi/chi_act/act.aspx?sd=2" title="送立法院審查">送立法院審查</a></li>
+        <li class="end"><a href="/chi/chi_act/act.aspx?sd=5" title="法規命令發布">法規命令發布</a></li>
+                </ul></li>
+              
+              <li><a href="http://coaa.moi.gov.tw/" target="_blank" title="訴願審議">訴願審議</a></li>
+              <li><a href="/chi/chi_law/law.aspx" title="法規相關連結">法規相關連結</a></li>
+              <li><a href="/chi/chi_act/act_info.aspx" title="法案預告及動態說明">法案預告及動態說明</a></li>
+              <li class="end"><a href="/chi/chi_act/act_files.aspx" title="法制作業及法規目錄下載">法制作業及法規目錄下載</a></li>
+            </ul>
+          </li> 
+          
+          <li class="n07"><a href="#">最新消息</a><span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li><a href="/chi/chi_news/news.aspx?type_code=02" title="新聞發布">新聞發布</a><li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=11" title="即時新聞澄清">即時新聞澄清</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=90" title="行政公告">行政公告</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=03" title="活動訊息">活動訊息</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=04" title="本部徵才">本部徵才</a></li>
+              <li><a href="#">影音專區</a><span class="caret"></span><ul class="dropdown-menu">
+                  <li><a href="/chi/chi_movie/photo_list.aspx" title="網路相簿">網路相簿</a></li>
+                  <li><a href="/chi/chi_movie/video_list.aspx" title="網路影音">網路影音</a></li>
+                  <li><a href="/chi/chi_movie/image_list.aspx" title="內政映像">內政映像</a></li>
+                  <li><a href="/chi/chi_movie/advertisement_list.aspx" title="內政文宣">內政文宣</a></li>
+                  <li class="end"><a href="/chi/chi_movie/promotion.aspx" title="好康報報">好康報報</a></li>
+                </ul>
+              </li>
+                
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+<!------------banner--------------->
+  <div class="banner slider">
+      
+              <div> <a href="http://asf.baphiq.gov.tw/index.php" title="非洲豬瘟資訊專區"> <img src="/files/topic_banners/topic_banners_604.jpg" alt="非洲豬瘟資訊專區"> </a> </div>
+          
+              <div> <a href="http://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15691&type_code=03" title="農地重劃工程設計訓練 提升農地生活、生產、生態改善及維護"> <img src="/files/topic_banners/cc_imageu_15691(1).jpg" alt="農地重劃工程設計訓練 提升農地生活、生產、生態改善及維護"> </a> </div>
+          
+              <div> <a href="http://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15659&type_code=02" title="言論自由系列活動 今年首度移師臺南"> <img src="/files/topic_banners/cc_imageu_15659(1).jpg" alt="言論自由系列活動 今年首度移師臺南"> </a> </div>
+          
+              <div> <a href="http://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15651&type_code=03" title="第4至第8梯次，3月18日至4月5日受理報名"> <img src="/files/topic_banners/topic_banners_1132.jpg" alt="第4至第8梯次，3月18日至4月5日受理報名"> </a> </div>
+          
+              <div> <a href="http://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15636&type_code=02" title="危老屋重建不麻煩 內政部：輔導團一條龍服務到好"> <img src="/files/topic_banners/cc_imageu_15636(1).jpg" alt="危老屋重建不麻煩 內政部：輔導團一條龍服務到好"> </a> </div>
+          
+              <div> <a href="http://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15630&type_code=01" title="「差之毫釐，失之千里」"> <img src="/files/topic_banners/cc_imageu_15630(1).jpg" alt="「差之毫釐，失之千里」"> </a> </div>
+          
+
+  </div>
+  <!------------banner-end--------------> 
+  <!------------連結方塊------------------>
+  <div class="con_acc"><a href="#" accesskey="c" id="accesskey_main_area" class="accesskey" title="內容區塊">:::</a></div>
+  <div class="link_box slider">
+    <div><a href="/chi/chi_ipmoi_note/policy_index01.aspx" title="人民安心．簡政便民"><img src="chi/images/index/icon01.png" alt="">
+      <p>人民安心．簡政便民</p>
+      </a></div>
+    <div><a href="/chi/chi_ipmoi_note/policy_index02.aspx" title="國土永續．居住正義"><img src="chi/images/index/icon02.png" alt="">
+      <p>國土永續．居住正義</p>
+      </a></div>
+    <div><a href="/chi/chi_ipmoi_note/policy_index03.aspx" title="公民參與．擁抱國際"><img src="chi/images/index/icon03.png" alt="">
+      <p>公民參與．擁抱國際</p>
+      </a></div>
+    <div><a href="/chi/chi_act/act.aspx?sd=0" title="法規預告發布"><img src="chi/images/index/icon04.png" alt="">
+      <p>法規預告發布</p>
+      </a></div>
+    
+	<div><a href="http://www.cpami.gov.tw/chinese/index.php?option=com_content&view=article&id=28027:2017-07-11-16-19-17&catid=249:2011-10-05-09-40-25&Itemid=53" target="_blank" title="前瞻基礎建設計畫 開新視窗"><img src="chi/images/index/icon06.png" alt="">
+      <p>前瞻基礎建設計畫</p>
+      </a></div> 
+  </div>
+  <!------------連結方塊end------------------> 
+  <!------------最新消息------------------>
+  <div class="news_box">
+    <div class="news row">
+      <div class="title"><h2 style="font-size: 100%">最新消息</h2></div>
+      <div class="size">
+        <ul>
+			<li class="l" title="大字"><a id="_ctl0_CP_IndexArea_font_change_large" href="javascript:__doPostBack(&#39;_ctl0$CP_IndexArea$font_change_large&#39;,&#39;&#39;)">A</a></li>
+			<li class="m" title="一般"><a id="_ctl0_CP_IndexArea_font_change_medium" href="javascript:__doPostBack(&#39;_ctl0$CP_IndexArea$font_change_medium&#39;,&#39;&#39;)">A</a></li>
+			<li class="s" title="小字"><a id="_ctl0_CP_IndexArea_font_change_small" href="javascript:__doPostBack(&#39;_ctl0$CP_IndexArea$font_change_small&#39;,&#39;&#39;)">A</a></li>
+        </ul>
+      </div>
+      <div id="tabs">
+        <ul>
+          <li><h3><a href="#tabs_2" class="tab2Link" title="新聞發布">新聞發布</a></h3></li>
+          <li><h3><a href="#tabs_6" title="即時新聞澄清">即時新聞澄清</a></h3></li>
+          <li><h3><a href="#tabs_3" title="行政公告">行政公告</a></h3></li>
+          <li><h3><a href="#tabs_4" title="活動訊息">活動訊息</a></h3></li>
+          <li><h3><a href="#tabs_5" title="本部徵才">本部徵才</a></h3></li>
+          
+          
+        </ul>
+        
+        <div id="tabs_2" class="clearfix">
+          <div class="rss"><a href="/rss1.aspx?t=news&type=02" title="新聞發布RSS(新視窗)" target="_blank">rss</a></div>
+          <div class="more"><a href="/chi/chi_news/news.aspx?type_code=02" title="更多新聞發布">MORE</a></div>
+          
+                <div class="news_area col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <a href="chi/chi_news/news_detail.aspx?type_code=02&sn=15745" title="難以想像的過去! 「噤聲的日常」特展移師臺南展出">
+            <div class="pic"><img src="/files/news_content/news_main_15745.jpg" alt=""></div>
+            <div class="info">
+            <div class="title">
+                
+                難以想像的過去! 「噤聲的日常」特展移師臺南展出</div>
+            你是否曾經歷「噤聲求生存」的年代?為了讓國人更深入瞭解臺灣戒嚴體制的歷史，反思當今言論自由的可貴，內政部結合文化部於今(27)日首度將言論自由日「噤聲的...</div></a>
+            </div>
+            
+                <div class="news_area col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <a href="chi/chi_news/news_detail.aspx?type_code=02&sn=15746" title="108年言論自由日系列活動臺南開跑！國內外專家學者齊聚捍衛言論自由">
+            <div class="pic"><img src="/files/news_content/news_main_15746.JPG" alt=""></div>
+            <div class="info">
+            <div class="title">
+                
+                108年言論自由日系列活動臺南開跑！國內外專家學者齊聚捍衛言論自由</div>
+            今年首度移師臺南舉辦的言論自由日系列活動，首場是今（27）日在國立成功大學成杏廳舉辦「民主社會中言論自由的新挑戰與回應」研討會，包括行政院秘書長李孟諺、...</div></a>
+            </div>
+            
+                <div class="news_area col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <a href="chi/chi_news/news_detail.aspx?type_code=02&sn=15747" title="再生水成高科技救命水 永康水資源回收中心開工">
+            <div class="pic"><img src="/files/news_content/news_main_15747.jpg" alt=""></div>
+            <div class="info">
+            <div class="title">
+                
+                再生水成高科技救命水 永康水資源回收中心開工</div>
+            全國首座供給高科技廠商使用的再生水廠，於今（27）日開工動土，內政部長徐國勇、營建署署長吳欣修、科技部南科管理局長林威呈及臺南市長黃偉哲等都到場，共同見...</div></a>
+            </div>
+            
+                <div class="news_area col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <a href="chi/chi_news/news_detail.aspx?type_code=02&sn=15729" title="199梯役男結訓  徐國勇勉勵：發揮所長 展現價值">
+            <div class="pic"><img src="/files/news_content/news_main_15729.jpg" alt=""></div>
+            <div class="info">
+            <div class="title">
+                
+                199梯役男結訓  徐國勇勉勵：發揮所長 展現價值</div>
+            內政部長徐國勇今(22)日上午到成功嶺主持替代役第199梯及研發替代役第80梯基礎訓練結訓典禮，徐國勇在典禮上特別勉勵役男，接下來要進到各單位去服役，希...</div></a>
+            </div>
+                       
+
+          </div>
+
+          <script>
+              //長寬比例判斷. 如果是非橫式(比例1.4), 就到相本中找橫式來的用
+              $(document).ready(function () { 
+                  $(".index_photo").each(function () {
+                      var main_photo_area = $(this);
+                      if (main_photo_area.find(".pic img").width() / main_photo_area.find(".pic img").height() < 1.3) { //main_photo_area.find(".pic img").width() / main_photo_area.find(".pic img").height() < 1.5
+                          //alert(main_photo_area.find(".pic img").attr("alt"));
+                          //alert(main_photo_area.find(".planB img").length);
+                          var photo_planB = main_photo_area.find(".planB img");
+                          
+                          $(photo_planB).each(function () {
+                              //alert($(this).width() / $(this).height());
+                              if ($(this).width() / $(this).height() >= 1.3) {
+                                  //alert("find");
+                                  $(main_photo_area).find(".pic img").attr("src", $(this).attr("src"));
+                              }
+                          });
+                      }
+                  });
+              });
+          </script>
+          
+
+        <div id="tabs_6" class="clearfix">
+          <div class="rss" title="rss"><a href="/rss1.aspx?t=news&type=11" title="即時新聞澄清RSS 開新視窗" target="_blank">rss</a></div>
+          <div class="more" title="看更多"><a href="/chi/chi_news/news.aspx?type_code=11" title="更多即時新聞澄清">MORE</a></div>
+          <ul class="list">
+            
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=11&sn=15735" title="跨國婚媒要慎選   二要三多保幸福">
+                      <p>108-03-22</p>
+                      
+                      跨國婚媒要慎選   二要三多保幸福</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=02&sn=15622" title="不動產實價申報登錄修法方向  內政部：逐步推動並尊重立法院審議結果">
+                      <p>108-03-06</p>
+                      
+                      不動產實價申報登錄修法方向  內政部：逐步推動並尊重立法院審議結果</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=11&sn=15620" title="移工聯盟陳情臨時收容所受收容人挨餓一情 移民署澄清說明">
+                      <p>108-03-06</p>
+                      
+                      移工聯盟陳情臨時收容所受收容人挨餓一情 移民署澄清說明</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=11&sn=15604" title="有關鏡週刊報導「30台男遭詐婚移民署成幫兇」移民署說明">
+                      <p>108-03-04</p>
+                      
+                      有關鏡週刊報導「30台男遭詐婚移民署成幫兇」移民署說明</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=11&sn=15617" title="針對林麗蟬立委質疑移民署收容量爆滿之回應說明">
+                      <p>108-03-01</p>
+                      
+                      針對林麗蟬立委質疑移民署收容量爆滿之回應說明</a></li>
+                            
+          </ul>
+        </div>
+
+        <div id="tabs_3" class="clearfix">
+          <div class="rss"><a href="/rss1.aspx?t=news&type=01" title="行政公告RSS 開新視窗" target="_blank">rss</a></div>
+          <div class="more"><a href="/chi/chi_news/news.aspx?type_code=90" title="更多行政公告">MORE</a></div>
+          <ul class="list">
+              
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=01&sn=15756" title="地籍圖資網路便民服務系統- 地籍資訊查詢的好幫手">
+                      <p>108-03-28</p>
+                      
+                      地籍圖資網路便民服務系統- 地籍資訊查詢的好幫手</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=01&sn=15759" title="國內尚未履行兵役義務「役男短期出境線上申請」及「役男體(複)檢查詢」系統將於108年4月3日22時至24時暫停服務">
+                      <p>108-03-28</p>
+                      
+                      國內尚未履行兵役義務「役男短期出境線上申請」及「役男體(複)檢查詢」系統將於108年4月3日22時至24時暫停服務</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=01&sn=15753" title="最新代之「地籍存摺」不動產產權資料已於3月1日開放申請，請多加利用。">
+                      <p>108-03-27</p>
+                      
+                      最新代之「地籍存摺」不動產產權資料已於3月1日開放申請，請多加利用。</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=01&sn=15748" title="內政部及地方政府成立租賃條例專區資訊">
+                      <p>108-03-27</p>
+                      
+                      內政部及地方政府成立租賃條例專區資訊</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=01&sn=15744" title="108年度研發替代役基礎及專業訓練預定期程表公告">
+                      <p>108-03-26</p>
+                      
+                      108年度研發替代役基礎及專業訓練預定期程表公告</a></li>            
+                            
+          </ul>
+        </div>
+        <div id="tabs_4" class="clearfix">
+          <div class="rss"><a href="/rss1.aspx?t=news&type=03" title="活動訊息RSS 開新視窗" target="_blank">rss</a></div>
+          <div class="more"><a href="/chi/chi_news/news.aspx?type_code=03" title="更多活動訊息">MORE</a></div>
+          <ul class="list">
+              
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=03&sn=15762" title="中央警察大學專題演講「全球化的發展與趨勢」">
+                      <p>108-03-28</p>
+                      
+                      中央警察大學專題演講「全球化的發展與趨勢」</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=03&sn=15761" title="內政部及所屬機關108年聯合舉辦「營緣桃李路˙真愛伴相隨」 未婚聯誼活動實施計畫">
+                      <p>108-03-28</p>
+                      
+                      內政部及所屬機關108年聯合舉辦「營緣桃李路˙真愛伴相隨」 未婚聯誼活動實施計畫</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=03&sn=15758" title="苗栗服務站赴小吃店  邀移工一起減塑">
+                      <p>108-03-28</p>
+                      
+                      苗栗服務站赴小吃店  邀移工一起減塑</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=03&sn=15755" title="辦理108年度民政局處長聯繫座談會">
+                      <p>108-03-28</p>
+                      
+                      辦理108年度民政局處長聯繫座談會</a></li>            
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=03&sn=15740" title="108年全國義消總隊聯繫會報　花蓮縣盛大召開">
+                      <p>108-03-27</p>
+                      
+                      108年全國義消總隊聯繫會報　花蓮縣盛大召開</a></li>            
+                            
+          </ul>
+        </div>
+        <div id="tabs_5" class="clearfix">
+          <div class="rss"><a href="/rss1.aspx?t=news&type=04" title="本部徵才RSS 開新視窗" target="_blank">rss</a></div>
+          <div class="more"><a href="/chi/chi_news/news.aspx?type_code=04" title="更多活動訊息">MORE</a></div>
+          <ul class="list">
+            
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=04&sn=15701" title="內政部空中勤務總隊工友徵才公告">
+                      <p>108-03-20</p>
+                      
+                      內政部空中勤務總隊工友徵才公告</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=04&sn=15681" title="中央警察大學公開甄選醫務室主任1名">
+                      <p>108-03-15</p>
+                      
+                      中央警察大學公開甄選醫務室主任1名</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=04&sn=15643" title="公告中央警察大學甄聘鑑識科學學系助理教授級專任教師1名">
+                      <p>108-03-08</p>
+                      
+                      公告中央警察大學甄聘鑑識科學學系助理教授級專任教師1名</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=04&sn=15642" title="公告中央警察大學甄聘犯罪防治學系助理教授級專任教師1名">
+                      <p>108-03-08</p>
+                      
+                      公告中央警察大學甄聘犯罪防治學系助理教授級專任教師1名</a></li>
+                
+                    <li><a href="chi/chi_news/news_detail.aspx?type_code=04&sn=15641" title="公告中央警察大學甄聘水上警察學系助理教授級專任教師1名">
+                      <p>108-03-08</p>
+                      
+                      公告中央警察大學甄聘水上警察學系助理教授級專任教師1名</a></li>
+                            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------最新消息end------------------> 
+
+  <!-------------統計指標-------------------->
+  <div class="count_title"><h2 style="font-size: 100%">內政統計主題專區</h2><span class="more"><a href="/stat/topic_stat.aspx" target="_blank" title="更多內政統計主題 開新視窗">more</a></span></div>
+  <div class="count_box slider">
+      
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><img src="/files/topic_stat/topic_stat_91.jpg" alt="婚姻移民建構臺灣多元文化社會"></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title">婚姻移民建構臺灣多元文化社會</div>
+                婚姻移民家庭讓臺灣社會湧入另一股新力量，融合呈現多元文化族群的風貌。30年來，婚姻移民以來自大陸地區最多，達33萬7,838人，其次依序為來自越南10萬418人，印尼2萬9,451人，港澳1萬5,846人及菲律賓9,075人，合占臺灣婚姻移民人數92.9%。 </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><img src="/files/topic_stat/topic_stat_81.jpg" alt="小三通申請及入境人次創新高！"></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title">小三通申請及入境人次創新高！</div>
+                自90年實施小三通以來，大陸地區人民申請進入金、馬、澎人次呈現上升趨勢，於104年開放大陸地區人民赴金、馬、澎得申請落地簽後，小三通人數更大幅增加，申請及入境人次分別為25.8萬人次及24.4萬人次，均較103年增1.5倍左右，至106年更達27.5萬人次及26.8萬人次；累計至106年底止，申請及入境人次雙雙突破100萬人次。<BR>107年內政部移民署推行小三通更多便利措施，預計將可帶來另一波人潮。<BR> </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><img src="/files/topic_stat/topic_stat_72.jpg" alt="在學役男兵役不擔心"></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title">在學役男兵役不擔心</div>
+                服兵役是男性國民應盡的義務，若徵兵及齡役男正就讀國內高級中等及其同等以上學校，學校會向戶籍地之直轄市、縣（市）政府申請在學緩徵，經核准之役男可等到完成學業後再入營服役。<BR>近年來因少子化因素影響，核定緩徵人數及仍在學緩徵人數均呈下降趨勢，其中核定緩徵人數自103年15萬9,126人逐年下降至106年13萬2,859人，4年減少2萬6,267人(-16.51%)；仍在學緩徵人數亦同步下降，自103年45萬4,307人下降至106年41萬6,042人，減少3萬8,265人(-8.42%)。<BR> </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><img src="/files/topic_stat/topic_stat_101.jpg" alt="歸化國籍者以國人配偶最多"></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title">歸化國籍者以國人配偶最多</div>
+                外籍人士歸化我國國籍原因以國人配偶為最多，平均約占8成9，其次依序為自願歸化、未成年之父、母或養父母現為國人、隨同歸化、曾在我國領域內合法居留繼續10年以上等。106年歸化人數為近5年來最多，係因國籍法105年12月21日修正發布實施，放寬受家暴離婚或喪偶的外籍配偶，或對我國籍未成年子女有扶養事實、行使負擔權利義務或會面交往者，申請歸化合法居留期間由5年降至3年，以及先許可歸化再提喪失原有國籍證明等相關規定。 </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><img src="/files/topic_stat/topic_stat_45.jpg" alt="推動禮儀師證照制度，殯葬服務更到位"></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title">推動禮儀師證照制度，殯葬服務更到位</div>
+                透過殯葬證照制度的實施，可精進殯葬人員的專業技能，並提升我國喪禮服務品質。內政部自103年4月28日起受理民眾申請核發禮儀師證書，截至107年10月31日為止，已有919人取得禮儀師證書，其中女性禮儀師375人、男性禮儀師544人，兩者比例約為四比六。<BR>如果您想進一步瞭解禮儀師申請條件等相關事宜，歡迎上內政部全國殯葬資訊入口網査詢！<BR> </div>
+            </div>
+          
+  </div>
+  <!-------------統計指標-end-------------------> 
+
+  <!-------------好康報報-------------------->
+  <div class="count_title count_title2"><h2 style="font-size: 100%">好康報報</h2><span class="more"><a href="/chi/chi_movie/promotion.aspx" target="_blank" title="看更多好康報報 開新視窗">more</a></span></div>
+  <div class="count_box slider">
+      
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><a href="https://www.ris.gov.tw/webapply/765" title=""><img src="/files/promotion/promotion_26.jpg" alt="申辦國民身分證可以繳交數位相片，省時省錢"></a></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title"><!--<a href="https://www.ris.gov.tw/webapply/765">-->申辦國民身分證可以繳交數位相片，省時省錢<!--</a>--></div>
+                為落實簡政便民，並提升國民身分證的製發品質，106年7月3日起，只要在內政部戶政司全球資訊網（網址： http://www.ris.gov.tw）點選「網路申辦」，再點選「國民身分證影像上傳作業」，輸入身分證統一編號、戶籍地、出生日期及驗證碼，就可以上傳數位相片電子檔，上傳後再到戶政事務所臨櫃申辦國民身分證，戶政事務所就可以直接替您下載相片電子檔製作國民身分證，不用再繳交紙本相片，省時又省錢，歡迎大家多多使用!! </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><a href="https://my.land.moi.gov.tw" title=""><img src="/files/promotion/promotion_94.png" alt="地籍存摺來敲門 財產管理好利器"></a></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title"><!--<a href="https://my.land.moi.gov.tw">-->地籍存摺來敲門 財產管理好利器<!--</a>--></div>
+                過去民眾想了解自己全部的不動產產權資料，除了找舊有的土地或建物所有權狀，就只能至地政事務所申領謄本。為方便大家取得個人全部不動產資料，內政部已建立「地籍存摺My Data查詢系統」，提供民眾、公司行號、組織團體及政府機關，透過自然人、工商、組織及機關憑證，免費上網申請個人地籍產權歷程及不動產實價歷次移轉價格等資料，並下載加值使用，讓您隨時能掌握產權大小事。如果想更進一步瞭解相關資訊，可至「地籍存摺」網站(https://my.land.moi.gov.tw)查詢。 </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><a href="https://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15581&type_code=03&pages=0&src=news" title=""><img src="/files/promotion/promotion_99.jpg" alt="新住民免費借用平板服務～推薦好禮活動來囉！"></a></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title"><!--<a href="https://www.moi.gov.tw/chi/chi_news/news_detail.aspx?sn=15581&type_code=03&pages=0&src=news">-->新住民免費借用平板服務～推薦好禮活動來囉！<!--</a>--></div>
+                想要隨時搜尋網路新知、在家數位學習的新住民朋友有福了，免費平板借用服務超簡單，宅配到家！即日起~108/3/31，新住民朋友推薦新住民成功借用平板電腦，好康禮券就送給您！<BR>※成功推薦1名（含）以上未滿3名→100元禮券<BR>※成功推薦3名（含）以上未滿5名→300元禮券<BR>※成功推薦5名（含）以上→500元禮券<BR>受推薦的新住民須未借用過平板電腦，第一波加碼再抽出3名【德國WMF】不沾煎鍋幸運得主！千萬不要錯過喔～<BR>詳情請看：https://goo.gl/p2rJnA 或撥打客服專線0800-700-101！ </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><a href="https://cris.nlsc.gov.tw/" title=""><img src="/files/promotion/promotion_93.jpg" alt="重測免費自動郵件通知服務 簡單申請、輕鬆掌握"></a></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title"><!--<a href="https://cris.nlsc.gov.tw/">-->重測免費自動郵件通知服務 簡單申請、輕鬆掌握<!--</a>--></div>
+                為推動地籍圖重測作業透明化，確保土地所有權人知的權利，本部國土測繪中心開發「重測便民服務查詢系統」，免費提供電子郵件或簡訊通知服務。土地所有權人可簽署自動郵件通知服務申請同意書，提供行動電話或電子郵件，或自行到「重測便民服務查詢系統（https://cris.nlsc.gov.tw/）」線上驗證土地所有權人資料後即可申辦。申辦成功後，重測作業單位寄發地籍調查或協助指界通知書時及實地辦理前1日皆會以簡訊或電子郵件提醒土地所有權人實地指界時間。本服務完全免費，歡迎重測區內的土地所有權人踴躍申請。 </div>
+            </div>
+          
+            <div class="service_box row">
+                <div class="pic col-lg-7 col-md-7 col-sm-6 col-xs-12"><a href="https://www.land.moi.gov.tw/chhtml/news/96" title=""><img src="/files/promotion/promotion_95.png" alt="市地重劃計畫書審查資訊公開透明"></a></div>
+                <div class="info col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                <div class="title"><!--<a href="https://www.land.moi.gov.tw/chhtml/news/96">-->市地重劃計畫書審查資訊公開透明<!--</a>--></div>
+                為保障民眾知悉權益，擴大民眾參與，本部推動市地重劃計畫書審核資訊透明化工作，自108年1月1日起於本部地政司網頁設立市地重劃主題專區並建置市地重劃計畫書審查資訊查詢系統，已公開本部107年以後公辦市地重劃區案件審查會議預告、審議通過會議紀錄及其重劃計畫書內容等相關資訊，以利民眾查詢，落實政府行政作業公開、透明目標。 </div>
+            </div>
+          
+  </div>
+  <!-------------好康報報-end-------------------> 
+
+  <!-------------公告-------------------->
+  
+  <!-------------公告-end-------------------> 
+
+  <!----------內容區----------------->
+  <div class="main">
+    <div class="row">
+      <div class="event_title"><div><h2 style="font-size: 100%">重要業務</h2></div></div>
+      <!-------------照片訊息-------------------->
+      <div class="event">
+        <div class="event_firstpic a1 col-lg-1 col-md-1 col-sm-1 col-xs-2"><h3>人民</h3></div>
+			<div class="regular slider col-lg-11 col-md-11 col-sm-11 col-xs-10">
+                <div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=1" title="消費者保護專區 開新視窗"><div class="title">消費者保護專區</div><div class="pic"><img src="files/important_banner/置頂_人民_消費者保護專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=2" title="性別平等專區 開新視窗"><div class="title">性別平等專區</div><div class="pic"><img src="files/important_banner/置頂_人民_性別平等專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=3" title="內政部憑證管理中心 開新視窗"><div class="title">內政部憑證管理中心</div><div class="pic"><img src="files/important_banner/人民_內政部憑證管理中心.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=4" title="遊說法專區 開新視窗"><div class="title">遊說法專區</div><div class="pic"><img src="files/important_banner/人民_遊說法專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=5" title="雲端看見世界警察博物館 開新視窗"><div class="title">雲端看見世界警察博物館</div><div class="pic"><img src="files/important_banner/人民_雲端看見世界警察博物館.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=50" title="關係人身分揭露公開 開新視窗"><div class="title">關係人身分揭露公開</div><div class="pic"><img src="files/important_banner/關係人身分揭露公開.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=6" title="DIGI中文網 開新視窗"><div class="title">DIGI中文網</div><div class="pic"><img src="files/important_banner/人民_DIGI中文網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=7" title="自然人憑證展期宣導 開新視窗"><div class="title">自然人憑證展期宣導</div><div class="pic"><img src="files/important_banner/人民_自然人憑證展期宣導.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=8" title="本部重大政策 開新視窗"><div class="title">本部重大政策</div><div class="pic"><img src="files/important_banner/人民_本部重大政策.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=9" title="民政司殯葬網 開新視窗"><div class="title">民政司殯葬網</div><div class="pic"><img src="files/important_banner/人民_民政司殯葬網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=10" title="性別統計專區 開新視窗"><div class="title">性別統計專區</div><div class="pic"><img src="files/important_banner/人民_性別統計專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=11" title="全國宗教資訊網 開新視窗"><div class="title">全國宗教資訊網</div><div class="pic"><img src="files/important_banner/人民_全國宗教資訊網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=12" title="地方公職人員資訊服務網 開新視窗"><div class="title">地方公職人員資訊服務網</div><div class="pic"><img src="files/important_banner/人民_地方公職人員資訊服務網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=13" title="新住民數位資訊e網 開新視窗"><div class="title">新住民數位資訊e網</div><div class="pic"><img src="files/important_banner/人民_新住民數位資訊e網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=14" title="現代國民婚禮 開新視窗"><div class="title">現代國民婚禮</div><div class="pic"><img src="files/important_banner/人民_現代國民婚禮.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=15" title="新住民培力發展資訊網 開新視窗"><div class="title">新住民培力發展資訊網</div><div class="pic"><img src="files/important_banner/人民_新住民培力發展資訊網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=16" title="現代國民生育禮 開新視窗"><div class="title">現代國民生育禮</div><div class="pic"><img src="files/important_banner/人民_現代國民生育禮.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=17" title="喪禮手冊 開新視窗"><div class="title">喪禮手冊</div><div class="pic"><img src="files/important_banner/人民_喪禮手冊.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=18" title="史料專區 開新視窗"><div class="title">史料專區</div><div class="pic"><img src="files/important_banner/人民_史料專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=19" title="內政部公益資訊平台 開新視窗"><div class="title">內政部公益資訊平台</div><div class="pic"><img src="files/important_banner/人民_內政部公益資訊平台.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=20" title="內政服務熱線1996 開新視窗"><div class="title">內政服務熱線1996</div><div class="pic"><img src="files/important_banner/人民_內政服務熱線1996.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=21" title="內政資料開放平臺 開新視窗"><div class="title">內政資料開放平臺</div><div class="pic"><img src="files/important_banner/人民_內政資料開放平臺.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=22" title="內政部聽證專區 開新視窗"><div class="title">內政部聽證專區</div><div class="pic"><img src="files/important_banner/人民_內政部聽證專區3.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=23" title="歸化國籍放寬囉-歸化國籍懶人包 開新視窗"><div class="title">歸化國籍放寬囉-歸化國籍懶人包</div><div class="pic"><img src="files/important_banner/人民_懶人包_歸化國籍放寬囉-歸化國籍懶人包.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=24" title="政黨及全國性政治團體資訊網 開新視窗"><div class="title">政黨及全國性政治團體資訊網</div><div class="pic"><img src="files/important_banner/人民_政黨及全國性政治團體資訊網.jpg" alt=""></div></a> </div>
+				
+			</div>
+
+		</div>
+       <div class="event">
+		<div class="event_firstpic a2 col-lg-1 col-md-1 col-sm-1 col-xs-2"><h3>土地</h3></div>
+			<div class="regular slider col-lg-11 col-md-11 col-sm-11 col-xs-10">
+                <div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=25" title="國土空間及利用審議資訊專區 開新視窗"><div class="title">國土空間及利用審議資訊專區</div><div class="pic"><img src="files/important_banner/土地_國土空間及利用審議資訊專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=26" title="NGIS 開新視窗"><div class="title">NGIS</div><div class="pic"><img src="files/important_banner/土地_NGIS.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=27" title="土壤液化防治專區 開新視窗"><div class="title">土壤液化防治專區</div><div class="pic"><img src="files/important_banner/土地_土壤液化防治專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=28" title="建築物公共安全 開新視窗"><div class="title">建築物公共安全</div><div class="pic"><img src="files/important_banner/土地_建築物公共安全.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=29" title="國家公園數位典藏 開新視窗"><div class="title">國家公園數位典藏</div><div class="pic"><img src="files/important_banner/土地_國家公園數位典藏.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=30" title="臺灣國家公園無障礙旅遊網 開新視窗"><div class="title">臺灣國家公園無障礙旅遊網</div><div class="pic"><img src="files/important_banner/土地_臺灣國家公園無障礙旅遊網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=31" title="一次讀懂住宅法懶人包-胖宅篇 開新視窗"><div class="title">一次讀懂住宅法懶人包-胖宅篇</div><div class="pic"><img src="files/important_banner/土地_懶人包_一次讀懂住宅法懶人包-胖宅篇.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=32" title="內政部不動產資訊平台 開新視窗"><div class="title">內政部不動產資訊平台</div><div class="pic"><img src="files/important_banner/土地_內政部不動產資訊平台.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=33" title="前瞻基礎建設計畫 開新視窗"><div class="title">前瞻基礎建設計畫</div><div class="pic"><img src="files/important_banner/土地_前瞻基礎建設計畫－城鄉建設.jpg" alt=""></div></a> </div>
+
+			</div>
+		</div>
+       <div class="event">
+		<div class="event_firstpic a3 col-lg-1 col-md-1 col-sm-1 col-xs-2"><h3>安全</h3></div>
+			<div class="regular slider col-lg-11 col-md-11 col-sm-11 col-xs-10">
+                <div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=34" title="165反詐騙宣導臉書粉絲專頁 開新視窗"><div class="title">165反詐騙宣導臉書粉絲專頁</div><div class="pic"><img src="files/important_banner/安全_165反詐騙宣導臉書粉絲專頁.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=35" title="165反詐騙 開新視窗"><div class="title">165反詐騙</div><div class="pic"><img src="files/important_banner/安全_165反詐騙.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=36" title="警察史蹟館專區 開新視窗"><div class="title">警察史蹟館專區</div><div class="pic"><img src="files/important_banner/安全_警察史蹟館專區.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=37" title="影像追緝網 開新視窗"><div class="title">影像追緝網</div><div class="pic"><img src="files/important_banner/安全_影像追緝網.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=38" title="1991報平安網路留言 開新視窗"><div class="title">1991報平安網路留言</div><div class="pic"><img src="files/important_banner/安全_1991報平安網路留言.jpg" alt=""></div></a> </div><div class="box"><a target="_blank" href="change_url.aspx?type=important_banner&sn=39" title="地震防災教育 開新視窗"><div class="title">地震防災教育</div><div class="pic"><img src="files/important_banner/安全_地震防災教育暨示範演練.jpg" alt=""></div></a> </div>
+				
+			</div>      
+		</div>
+	   </div>
+	   <!-------------照片訊息-end------------------->  
+
+    <!--<div class="gotop" id="gotop"><a href="#" title="回到最上方">gotop</a></div>-->
+  </div>
+
+
+
+  <!-------------連結專區--------------------------->
+      <div class="ad_box">
+        <div class="title"><h2 style="font-size: 100%">網網相連</h2></div>
+        <div class="ad slider">
+            
+                    <div> <a href='change_url.aspx?type=small_banner&sn=315' target='_blank' title='行政院公報資訊網 開新視窗'><img src='/files/small_banner/行政院公報資訊網.jpg'  alt='行政院公報資訊網'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=336' target='_blank' title='司法院訴訟外紛爭解決(ADR)資訊專區 開新視窗'><img src='/files/small_banner/ADR.jpg'  alt='司法院訴訟外紛爭解決(ADR)資訊專區'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=334' target='_blank' title='ODF文件應用工具 開新視窗'><img src='/files/small_banner/未命名-3_1.jpg'  alt='ODF文件應用工具'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=339' target='_blank' title='非洲豬瘟資訊專區 開新視窗'><img src='/files/small_banner/非洲豬瘟資訊專區.jpg'  alt='非洲豬瘟資訊專區'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=338' target='_blank' title='聯合國兒童權利公約資訊網 開新視窗'><img src='/files/small_banner/crc-logo.jpg'  alt='聯合國兒童權利公約資訊網'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=335' target='_blank' title='青年資源讚 開新視窗'><img src='/files/small_banner/青年資源讚.jpg'  alt='青年資源讚'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=326' target='_blank' title='CRPD 身心障礙者權利公約 開新視窗'><img src='/files/small_banner/CRPD身心障礙者權利公約.jpg'  alt='CRPD 身心障礙者權利公約'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=324' target='_blank' title='我的E政府 開新視窗'><img src='/files/small_banner/我的E政府_1.jpg'  alt='我的E政府'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=323' target='_blank' title='矯正機關自營商品展售商城 開新視窗'><img src='/files/small_banner/1060427273__設置連結法務部矯正署「矯正機關自營商品展售商城」網站_ATTCH3.jpg'  alt='矯正機關自營商品展售商城'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=322' target='_blank' title='總統創新獎 開新視窗'><img src='/files/small_banner/logo2.jpg'  alt='總統創新獎'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=320' target='_blank' title='行政院洗錢防制辦公室網站 開新視窗'><img src='/files/small_banner/download3.jpg'  alt='行政院洗錢防制辦公室網站'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=319' target='_blank' title='衛生福利部中央健康保險署-全球資訊網 開新視窗'><img src='/files/small_banner/衛生福利部中央健康保險署-全球資訊網.jpg'  alt='衛生福利部中央健康保險署-全球資訊網'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=317' target='_blank' title='週休二日修法說明 開新視窗'><img src='/files/small_banner/週休二日修法說明.jpg'  alt='週休二日修法說明'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=316' target='_blank' title='反毒大本營 開新視窗'><img src='/files/small_banner/反毒大本營.jpg'  alt='反毒大本營'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=340' target='_blank' title='國防部108年_全民國防教育 開新視窗'><img src='/files/small_banner/國防部106年_全民國防教育_2_1.gif'  alt='國防部108年_全民國防教育'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=341' target='_blank' title='人權大步走專區_108年 開新視窗'><img src='/files/small_banner/151017143992_1_1_1_1.gif'  alt='人權大步走專區_108年'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=310' target='_blank' title='外交部_點亮台灣，亞洲典範 開新視窗'><img src='/files/small_banner/點亮149x57.jpg'  alt='外交部_點亮台灣，亞洲典範'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=105' target='_blank' title='經濟部ecfa 開新視窗'><img src='/files/small_banner/經濟部ecfa.jpg'  alt='經濟部ecfa'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=77' target='_blank' title='行政院農業委員會「農業虛擬博物館」 開新視窗'><img src='/files/small_banner/098E009919-01.gif'  alt='行政院農業委員會「農業虛擬博物館」'  width='120' height='45'></a></div>
+                
+                    <div> <a href='change_url.aspx?type=small_banner&sn=101' target='_blank' title='全民健保局 開新視窗'><img src='/files/small_banner/健保局.jpg'  alt='全民健保局'  width='120' height='45'></a></div>
+                
+        </div>
+      </div>
+      <!-------------連結專區end---------------------------> 
+
+  <!----------內容區----------------->
+  
+  
+  <!--------FATFOOT---------------->
+  <div class="fat_box">
+    <div id="accordion" class="fat">
+      <div>收合</div>
+      <div>
+
+          <ul>
+              <li class="title"><a href="/chi/chi_about/about.aspx" title="本部簡介">本部簡介</a></li>
+              <li><a href="/chi/chi_about/organization.aspx" title="職掌及組織">職掌及組織</a></li>
+              <li><a href="/chi/chi_minister/minister.aspx?type=01" title="部長專區">部長專區</a></li>
+              <li><a href="/chi/chi_public/policy.aspx?policy_code=02&type=info" title="施政計畫">施政計畫</a></li>
+              <li><a href="https://www.moi.gov.tw/outline/index.html" target="_blank" title="內政概要">內政概要</a></li>
+              <li><a href="/chi/chi_about/tel_classify.aspx" title="聯絡資訊">聯絡資訊</a></li>
+              <li><a href="/chi/chi_about/tel_classify.aspx?type=unit" title="本部單位及所屬機關">本部單位及所屬機關</a></li>
+          </ul>
+
+          <ul>
+              <li class="title"><a href="/chi/chi_ipmoi_note/policy_index01.aspx" title="重大政策">重大政策</a></li>
+              <li><a href="/chi/chi_ipmoi_note/policy_index01.aspx" title="人民安心．簡政便民">人民安心．簡政便民</a><li>
+              <li><a href="/chi/chi_ipmoi_note/policy_index02.aspx" title="國土永續．居住正義">國土永續．居住正義</a></li>
+              <li><a href="/chi/chi_ipmoi_note/policy_index03.aspx" title="公民參與．擁抱國際">公民參與．擁抱國際</a></li>
+          </ul>
+          <ul>
+              <li class="title"><a href="#" title="申辦表單">申辦表單</a></li>
+              <li><a href="http://www.gov.tw/News2.aspx?n=21595FA41A9EE70A&sms=CE45CBF44B3CA591&OID=2.16.886.101.20003.20001" target="_blank" title="表單下載">表單下載</a></li>
+              <li><a style="display:none" href="/chi/chi_egov_app/form_list.aspx" title="主題類別">主題類別</a></li>
+			  <li><a style="display:none" href="http://www.moi.gov.tw/chi/chi_egov_app/apply_list.aspx" title="線上申辦">線上申辦</a></li>
+			  <li><a href="https://www.gov.tw/News2.aspx?n=07ACE2E316EEE218&sms=8A7DADA9FBF26FDA&OID=2.16.886.101.20003.20001" target="_blank" title="線上申辦">線上申辦</a></li>
+          </ul>
+
+          <ul>
+              <li class="title"><a href="/chi/chi_public_info/index.aspx" title="政府資訊公開">政府資訊公開</a></li>
+          </ul>
+
+          <ul>
+              <li class="title"><a href="#">法規及訴願</a></li>
+
+              <li><a href="http://glrs.moi.gov.tw/" target="_blank" title="主管法規查詢系統">主管法規查詢系統</a></li>
+              <li><a href="/chi/chi_Act/Act.aspx" title="法案預告及動態">法案預告及動態</a></li>
+              <li><a href="http://coaa.moi.gov.tw/" target="_blank" title="訴願審議">訴願審議</a></li>
+              <li><a href="/chi/chi_law/law.aspx" title="法規相關連結">法規相關連結</a></li>
+          </ul>
+
+         
+
+          <ul>
+              <li class="title"><a href="#">最新消息</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=02" title="新聞發布">新聞發布</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=11" title="即時新聞澄清">即時新聞澄清</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=90" title="行政公告">行政公告</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=03" title="活動訊息">活動訊息</a></li>
+              <li><a href="/chi/chi_news/news.aspx?type_code=04" title="本部徵才">本部徵才</a></li>
+              <li><a href="/chi/chi_movie/photo_list.aspx" title="影音專區">影音專區</a><li>              
+          </ul>
+          
+        
+        
+      </div>
+    </div>
+  </div>
+  <!----------------FAT-end------------------> 
+  <!------------FOOTER----->
+  <div class="footer_box">
+    <div class="footer clearfix">
+      <div class="txt_link">
+      <div class="logo"><a href="/index.aspx" title="中華民國內政部logo"><img src="/chi/images/all/foot_logo.png" alt="中華民國內政部"></a></div>
+      <div><a href="/web_safety.aspx" title="網站安全政策">網站安全政策</a>｜<a href="/private_policy.aspx" title="隱私權保護政策">隱私權保護政策</a>｜<a href="/copyright.aspx" title="政府網站資料開放宣告">政府網站資料開放宣告</a>｜<a href="/pdp.pdf" title="保有及管理個人資料">保有及管理個人資料</a></div>
+      <p>地址：10055臺北市中正區徐州路5號 (<a href="http://www.moi.gov.tw/chi/chi_about/tgos_map2.aspx?X=302417.759&Y=2770530.722&AddressString=10055台北市中正區徐州路5號&UnitName=內政部+&fsize=Y" title="內政部位置圖" target="_blank" class=" ">位置圖</a>)｜總機：1996 內政服務熱線；(+886)2-8195-8151</p>
+      <p>IE請升級至9.0以上‧最佳螢幕解析度 1024x768</p>
+      </div>
+      <div class="link">
+        <ul class="icon">
+          <li class="acce"><a href="https://www.handicap-free.nat.gov.tw/Applications/Detail?category=20181031152122" target="_blank" title="無障礙網站"><img src="/chi/images/all/icon_acce.png" border="0" width="88" height="31" alt="通過A檢測等級無障礙網頁檢測"></a></li>
+          <li class="fr"><a href="http://www.flickr.com/photos/wwwmoigovtw/sets/" target="_blank" title="flickr"><img src="/chi/images/all/icon_fr.png" alt="flickr"></a></li>
+          <li class="youtube"><a href="https://www.youtube.com/user/wwwmoigovtw?gl=TW&hl=zh-TW" target="_blank" title="youtube"><img src="/chi/images/all/icon_youtube.png" alt="youtube"></a></li>
+          <li class="qr"><img src="/chi/images/all/icon_qr.png" alt="qrcode"></li>
+          <li class="gov"><a href="http://www.gov.tw/" target="_blank" title="我的E政府"><img src="/chi/images/all/icon_gov.png" alt="我的E政府"></a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="gotop" id="gotop"><a href="#" title="回到最上方">gotop</a></div>
+
+</form></div>
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/external/jquery/jquery.js"></script> 
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="/chi/js/jquery-ui-1.11.4/datepicker-zh-TW.js"></script>
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/ui/core.js"></script> 
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/ui/widget.js"></script> 
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/ui/accordion.js"></script> 
+<script src="/chi/js/jquery-ui-1.11.4/jquery-ui-1.11.4/ui/tabs.js"></script> 
+<script src="/chi/js/slick-1.6.0/slick/slick.js" type="text/javascript" charset="utf-8"></script> 
+<script src="/chi/js/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script> 
+<!-- SmartMenus jQuery plugin --> 
+<script type="text/javascript" src="/chi/js/smartmenus-1.0.0/jquery.smartmenus.js"></script> 
+<!-- SmartMenus jQuery Bootstrap Addon --> 
+<script type="text/javascript" src="/chi/js/smartmenus-1.0.0/addons/bootstrap/jquery.smartmenus.bootstrap.js"></script> 
+<script>
+    $(document).on('ready', function () {
+
+        /*top*/
+        $("#gotop").click(function () {
+            jQuery("html,body").animate({
+                scrollTop: 0
+            }, 1000);
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $('#gotop').fadeIn("fast");
+            } else {
+                $('#gotop').stop().fadeOut("fast");
+            }
+        });
+        /*------------count-----------------------*/
+        $(".count_box").slick({
+            autoplaySpeed: 10000,
+            slidesToShow: 1,
+            autoplay: true,
+            fade: true,
+        });
+        /*------------link_box_legal-----------------------*/
+        $(".link_box").slick({
+            slidesToShow: 5,
+            autoplay: true,
+            responsive: [
+	{
+	    breakpoint: 970,
+	    settings: {
+	        slidesToShow: 4,
+	    }
+	},
+    {
+        breakpoint: 800,
+        settings: {
+            slidesToShow: 3,
+        }
+    },
+	    {
+	        breakpoint: 480,
+	        settings: {
+	            slidesToShow: 2,
+	        }
+	    },
+	    {
+	        breakpoint: 330,
+	        settings: {
+	            slidesToShow: 1,
+	        }
+	    }
+
+            ]
+        });
+        /*---------------banner輪播-----------------------------------*/
+        $('.banner').slick({
+            arrows: false,
+            dots: true,
+            infinite: true,
+            slidesToShow: 1,
+            autoplay: true,
+        });
+        /*----------------照片訊息-----------------------*/
+        $(".regular").slick({
+            arrows: true,
+            infinite: true,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            autoplay: false,
+            responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+            }
+        },
+        {
+            breakpoint: 640,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+            ]
+        });
+        /*------------下方廣告-----------------------*/
+        $(".ad").slick({
+            dots: false,
+            infinite: true,
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: false,
+            responsive: [
+        {
+            breakpoint: 970,
+            settings: {
+                slidesToShow: 5,
+            }
+        },
+        {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 4,
+            }
+        },
+        {
+            breakpoint: 670,
+            settings: {
+                slidesToShow: 3,
+            }
+        }
+        ,
+        {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 2,
+            }
+        }
+        ,
+        {
+            breakpoint: 380,
+            settings: {
+                slidesToShow: 1,
+            }
+        }
+            ]
+        });
+
+		//補 title開新視窗
+		  $("a[target='_blank'").each(function(){
+			if ($(this).prop("title").indexOf("視窗") < 0 && $(this).prop("title").indexOf("new window") < 0){
+			//	console.log($(this).attr("href"));
+				//console.log($(this).prop("title") + "_" + $(this).prop("target"));
+				$(this).prop("title", $(this).prop("title") + " 開新視窗");
+			}
+		  });
+		  
+			$("a[href='#accesskey_main_area']").keypress(function(e){
+				if (e.keyCode == 13 || e.keyCode == 9) {
+					//do nothing
+				}else{
+					e.preventDefault();			
+				}
+				if (e.which == 13) {
+					$("#accesskey_main_area").focus();
+				}
+				
+			});
+        /*------上方選單-------------*/
+        //var navigation = responsiveNav(".nav-collapse", {
+        //    animate: true,                    // Boolean: Use CSS3 transitions, true or false
+        //    transition: 284,                  // Integer: Speed of the transition, in milliseconds
+        //    label: "Menu",                    // String: Label for the navigation toggle
+        //    insert: "after",                  // String: Insert the toggle before or after the navigation
+        //    customToggle: "",                 // Selector: Specify the ID of a custom toggle
+        //    closeOnNavClick: false,           // Boolean: Close the navigation when one of the links are clicked
+        //    openPos: "relative",              // String: Position of the opened nav, relative or static
+        //    navClass: "nav-collapse",         // String: Default CSS class. If changed, you need to edit the CSS too!
+        //    navActiveClass: "js-nav-active",  // String: Class that is added to <html> element when nav is active
+        //    jsClass: "js",                    // String: 'JS enabled' class which is added to <html> element
+        //    init: function () { },               // Function: Init callback
+        //    open: function () { },               // Function: Open callback
+        //    close: function () { }               // Function: Close callback
+        //});
+    });
+</script> 
+<!-- 抬頭顯示器 --> 
+<script src="/chi/js/resize-header-on-scroll/js/classie.js"></script> 
+<script>
+    $(function () {
+        $("#tabs").tabs();
+        $("#accordion").accordion({
+            collapsible: true
+        });
+        $("#accordion_list").accordion({
+            heightStyle: "content",
+            collapsible: true
+        });
+        $("#_ctl0_searchbt").click(function () {
+            $("#aspnetForm").attr("target", "_blank");
+            setTimeout(function () { $("#aspnetForm").attr("target", "_self"); }, 1000);
+        });
+
+    });
+</script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+	$("img").each(function(){
+		if ($(this).attr("alt") == " " || $(this).attr("alt") == "*"){
+			$(this).attr("alt", "");
+		}
+	});
+
+        $("#_ctl0_keyword").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/SearchKeyword.asmx/GetKeyword',
+                    //url: '/Service.asmx/GetCustomers',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data.d, function (item) {
+                            return {
+                                label: item
+                            }
+                        }))
+                    },
+                    error: function (response) {
+                        //alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        //alert(response.responseText);
+                    }
+                });
+            },
+            minLength: 1
+        });
+
+    });
+
+
+
+    function PrintPage() {
+        //$(".NoPrint").hide();
+        $(".sticky-wrapper").hide();
+        $(".PrintOnly").show();
+        //$(".sticky-wrapper").hide();
+		$(".top_link").hide();
+		$(".editor").addClass("editorPrint");
+		$(".editorPrint").removeClass("editor");
+		window.print();
+        $(".sticky-wrapper").show();
+        $(".PrintOnly").hide();
+		$(".top_link").show();
+		$(".editorPrint").addClass("editor");
+		$(".editor").removeClass("editorPrint");
+		
+    }
+
+</script>
+	
+<!--auto complete e-->
+
+<script src="/chi/js/resize-header-on-scroll/js/classie.js"></script> 
+<script>
+    $(function () {
+        $("#tabs").tabs();
+        $("#accordion").accordion({
+            collapsible: true,
+            heightStyle: "content",
+        });
+        $(window).resize(function () {
+            $(".ui-accordion-content").css("height", "auto");
+        });
+		$("#loading").attr("alt", "語音播放");
+    });
+</script>
+
+    
+
+  <script>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10295801-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+</script>
+
+</body>
+</html>
