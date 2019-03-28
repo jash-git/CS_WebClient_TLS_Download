@@ -1,4 +1,4 @@
-﻿C# 用HttpWebRequest和 WebClient 支援SSL、TSL 連線 範例 [CS_WebClient_TLS_Download]
+﻿C# 用HttpWebRequest和 WebClient 支援SSL、TLS 連線 範例 [CS_WebClient_TLS_Download]
 
 資料來源:https://blog.darkthread.net/blog/webclient-and-tls12/
 https://stackoverflow.com/a/39534068/288936
